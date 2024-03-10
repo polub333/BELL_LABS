@@ -24,7 +24,9 @@ plt.ylabel(r'$n$') # Подпись ординат
 x0 = [0.01, 0.02, 0.03, 0.32]
 y0 = [1.667, 1.667, 1.667, 1.667]
 
-p = np.polyfit(x0, y0, deg=1) # Построение кривой по мнк
+p, c = np.polyfit(x0, y0, deg=1, cov=True) # Построение кривой по мнк
+otvet = np.sqrt(np.diag(c))
+print(otvet)
 p_f = np.poly1d(p)
 line1, = plt.plot(x0, p_f(x0), label='ordinary', c='green')
 print(p_f)
